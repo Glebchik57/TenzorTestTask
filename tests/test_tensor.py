@@ -1,0 +1,32 @@
+from pages.locators import MainPageLocators, TensorPageLocators, AboutPageLocators
+from pages.main_page import MainPage
+from pages.contact_page import ContactsPage
+from pages.tensor_page import TensorPage
+from pages.about_page import AboutPage
+
+
+class TestCase1():
+    def test_shoukd_be_power_in_pepople(self, browser):
+        page = MainPage(
+            browser,
+            MainPageLocators.SELF_LINK
+        )
+        page.open()
+        page.go_to_contacts_page()
+        contact_page = ContactsPage(browser, browser.current_url)
+        contact_page.go_to_tensor()
+        contact_page.change_window()
+        tensor_page = TensorPage(browser, browser.current_url)
+        tensor_page.should_be_power_in_people_block()
+
+    def test_about_should_be_right(self, browser):
+        page = TensorPage(browser, TensorPageLocators.SELF_LINK)
+        page.open()
+        page.go_to_about()
+        about_page = AboutPage(browser, browser.current_url)
+        about_page.url_about_is_right()
+
+    def test_pictures_should_be_same_size(self, browser):
+        page = AboutPage(browser, AboutPageLocators.SELF_LINK)
+        page.open()
+        page.pictures_have_same_sizes()
