@@ -1,5 +1,8 @@
 '''Модуль содержащий тесты'''
 
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 from pages.locators import MainPageLocators, TensorPageLocators, AboutPageLocators, ContacsPageLocators
 from pages.main_page import MainPage
 from pages.contact_page import ContactsPage
