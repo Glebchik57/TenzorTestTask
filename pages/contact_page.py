@@ -1,11 +1,9 @@
 '''Модуль содержащий реализацию Page Object Model для страницы contacts.'''
 
+import time
+
 from .base_page import BasePage
 from .locators import ContacsPageLocators
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
-import time
 
 
 class ContactsPage(BasePage):

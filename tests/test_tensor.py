@@ -1,19 +1,22 @@
 '''Модуль содержащий тесты'''
 
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+import time
 
-from pages.locators import MainPageLocators, TensorPageLocators, AboutPageLocators, ContacsPageLocators
+from pages.locators import (
+    MainPageLocators,
+    TensorPageLocators,
+    AboutPageLocators,
+    ContacsPageLocators
+)
 from pages.main_page import MainPage
 from pages.contact_page import ContactsPage
 from pages.tensor_page import TensorPage
 from pages.about_page import AboutPage
 
-import time
-
 
 class TestCase1():
     '''Класс содержащий тесты для сценария №1'''
+
     def test_shoukd_be_power_in_pepople(self, browser):
         '''Метод проверяющий наличия блока сила в людях'''
         page = MainPage(
@@ -45,6 +48,7 @@ class TestCase1():
 
 class TestCase2():
     '''Класс содержащий тесты для сценария №2'''
+
     def test_should_be_right_region_partners_there_are(self, browser):
         '''Метод проверки правильности выбора региона и наличия блока партнеры'''
         page = MainPage(
@@ -62,6 +66,6 @@ class TestCase2():
         contact_page.open()
         old_inf = contact_page.get_information_current_region()
         contact_page.change_region()
-        time.sleep(10)
+        time.sleep(5)
         new_inf = contact_page.get_information_current_region()
         contact_page.check_region_was_changed(old_inf, new_inf)
