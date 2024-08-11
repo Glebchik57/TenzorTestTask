@@ -40,15 +40,11 @@ class ContactsPage(BasePage):
 
     def change_region(self):
         '''Метод смены региона'''
-        wait = WebDriverWait(self.browser, 20)
         region = self.browser.find_element(*ContacsPageLocators.REGION)
         region.click()
-        time.sleep(10)
-        # target_region = self.browser.find_element(*ContacsPageLocators.KAMCHATKA)
-        wait.until(EC.element_to_be_clickable(ContacsPageLocators.KAMCHATKA)).click()
-        #time.sleep(10)
-        # target_region.click()
-        #wait.until(EC.text_to_be_present_in_element(ContacsPageLocators.REGION, 'Камчатский край'))
+        time.sleep(5)
+        kamchatka = self.browser.find_element(*ContacsPageLocators.KAMCHATKA)
+        kamchatka.click()
 
     def check_region_was_changed(self, old_inf, new_inf):
         '''Метод проверки смены региона'''
@@ -61,5 +57,3 @@ class ContactsPage(BasePage):
                 assert old_inf[i] != new_inf[i], 'title вкладки не поменялся'
             elif i == 3:
                 assert old_inf[i] != new_inf[i], 'Список партнеров не поменялся'
-
-        # assert old_inf != new_inf, 'Информация на странице не поменялась'
