@@ -17,7 +17,6 @@ class ContacsPageLocators():
     PARTNERS = (By.CSS_SELECTOR, '[name="itemsContainer"]')
     PARTNERSNAMES = (By.CSS_SELECTOR, '.sbisru-Contacts-List__name')
     KAMCHATKA = (By.CSS_SELECTOR, '[title="Камчатский край"]')
-    KAMCHATKA_FLAG = (By.XPATH, "//span[@title='Камчатский край']")
 
 
 class TensorPageLocators():
@@ -32,7 +31,3 @@ class AboutPageLocators():
     SELF_LINK = 'https://tensor.ru/about'
     WORKING = (By.CSS_SELECTOR, '.tensor_ru-container.tensor_ru-section.tensor_ru-About__block3')
     PHOTOS = (By.CSS_SELECTOR, '.tensor_ru-container.tensor_ru-section.tensor_ru-About__block3 img')
-
-
-class DownloadPageLocators():
-    WEB_DOWNLOADER = (By.CSS_SELECTOR, '???')
