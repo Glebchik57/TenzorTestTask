@@ -1,3 +1,5 @@
+'''Модуль содержащий реализацию Page Object Model для страницы contacts.'''
+
 from .base_page import BasePage
 from .locators import ContacsPageLocators
 from selenium.webdriver.support.ui import WebDriverWait
@@ -7,16 +9,22 @@ import time
 
 
 class ContactsPage(BasePage):
+    '''Класс содержащий методы для страницы contacts'''
+
     def go_to_tensor(self):
+        '''Метод перехода на страницу tensor'''
         link = self.browser.find_element(*ContacsPageLocators.BANER)
         link.click()
 
     def region_is_right_partners_there_are(self):
+        '''Метод проверки правильности автоматического
+          выбора региона и наличия блока партнеры'''
         region = self.browser.find_element(*ContacsPageLocators.REGION)
         assert region.text == 'Калининградская обл.', 'Регион определился неверно'
         assert self.is_element_present(*ContacsPageLocators.PARTNERS), 'Блок "Партнеры" отсутствует'
 
     def get_information_current_region(self):
+        '''Метод сбора информации, которая меняется в зависимости от выбора региона'''
         region_inf = []
         name = self.browser.find_element(*ContacsPageLocators.REGION)
         url = self.browser.current_url
@@ -31,6 +39,7 @@ class ContactsPage(BasePage):
         return region_inf
 
     def change_region(self):
+        '''Метод смены региона'''
         wait = WebDriverWait(self.browser, 20)
         region = self.browser.find_element(*ContacsPageLocators.REGION)
         region.click()
@@ -42,6 +51,7 @@ class ContactsPage(BasePage):
         #wait.until(EC.text_to_be_present_in_element(ContacsPageLocators.REGION, 'Камчатский край'))
 
     def check_region_was_changed(self, old_inf, new_inf):
+        '''Метод проверки смены региона'''
         for i in range(len(old_inf)):
             if i == 0:
                 assert old_inf[i] != new_inf[i], 'Регион возле заголовка "контакты" не поменялся'

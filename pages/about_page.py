@@ -1,13 +1,19 @@
+'''Модуль содержащий реализацию Page Object Model для страницы about.'''
+
 from .base_page import BasePage
 from .locators import AboutPageLocators
 
 
 class AboutPage(BasePage):
+    '''Класс содержащий методы страницы about'''
+
     def url_about_is_right(self):
+        '''Проверке верности url'''
         url = 'https://tensor.ru/about'
         assert self.browser.current_url == url, 'URL не соответсвует необходимому'
 
     def pictures_have_same_sizes(self):
+        '''Проверка соответствия размеров картинок друг другу'''
         flag_img = True
         images = self.browser.find_elements(*AboutPageLocators.PHOTOS)
         info = []
